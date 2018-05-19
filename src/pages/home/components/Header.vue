@@ -9,7 +9,6 @@
     </div>
     <div class='header-right'>
       城市
-      <!-- <i class="iconfont">&#xe64a;</i> -->
     </div>
   </div>
 </template>
