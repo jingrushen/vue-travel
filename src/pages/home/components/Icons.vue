@@ -112,7 +112,7 @@ export default {
         .icon-list
           display block
           position absolute
-          top .3rem
+          top .15rem
           left 0
           bottom 0
           right 0
@@ -125,8 +125,9 @@ export default {
             background-repeat no-repeat
             background-size 9rem 3.29rem
           .icon-desc
+            line-height .25rem
             font-size .2rem
-            margin-top .1rem
+            margin-top .15rem
             color $textColor
             ellipsis()
           .icon-1
