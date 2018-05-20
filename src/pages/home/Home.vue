@@ -57,8 +57,9 @@ export default {
 }
 </script>
 
-<style>
-  .swiper-pagination-bullet-active {
-    background: #fff
-  }
+<style lang='stylus'>
+  .swiper-pagination-bullet-active
+    background #fff
+  a
+    color #fff
 </style>

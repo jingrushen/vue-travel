@@ -7,9 +7,11 @@
       <i class="iconfont">&#xe632;</i>
       输入城市/景点/游玩
     </div>
-    <div class='header-right'>
-      {{ city }}
-    </div>
+    <router-link to="/city">
+      <div class='header-right'>
+        {{ city }}
+      </div>
+    </router-link>
   </div>
 </template>
 
