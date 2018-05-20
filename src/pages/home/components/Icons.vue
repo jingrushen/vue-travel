@@ -20,70 +20,18 @@ export default {
   name: 'Icons',
   data () {
     return {
-      imgClass: 'icon-img',
-      iconList: [
-        {
-          id: '001',
-          class: 'icon-1',
-          desc: '签证 · WIFI'
-        },
-        {
-          id: '002',
-          class: 'icon-2',
-          desc: '出境游'
-        },
-        {
-          id: '003',
-          class: 'icon-1',
-          desc: '签证 · WIFI'
-        },
-        {
-          id: '004',
-          class: 'icon-2',
-          desc: '出境游'
-        },
-        {
-          id: '005',
-          class: 'icon-1',
-          desc: '签证 · WIFI'
-        },
-        {
-          id: '006',
-          class: 'icon-1',
-          desc: '签证 · WIFIsfaffadffasf'
-        },
-        {
-          id: '007',
-          class: 'icon-2',
-          desc: '出境游'
-        },
-        {
-          id: '008',
-          class: 'icon-1',
-          desc: '签证 · WIFI'
-        },
-        {
-          id: '009',
-          class: 'icon-2',
-          desc: '出境游'
-        },
-        {
-          id: '0010',
-          class: 'icon-1',
-          desc: '签证 · WIFI'
-        },
-        {
-          id: '0011',
-          class: 'icon-2',
-          desc: '出境游'
-        }
-      ]
+      imgClass: 'icon-img'
+    }
+  },
+  props: {
+    icon: {
+      type: Array
     }
   },
   computed: {
     pages () {
       const pages = []
-      this.iconList.forEach((item, index) => {
+      this.icon.forEach((item, index) => {
         let page = Math.floor(index / 8)
         if (!pages[page]) {
           pages[page] = []
@@ -99,6 +47,9 @@ export default {
 <style lang="stylus" scoped>
 @import '~styles/varibles.styl'
 @import '~styles/mixins.styl'
+  .icons >>> .swiper-container
+    height: 0;
+    padding-bottom: 50%
   .icons
     padding-bottom 50%
     height 0
