@@ -1,6 +1,15 @@
 <template>
   <ul class="list">
-    <li class="item" v-for='(item, key) of cities' :key='key'>{{ key }}</li>
+    <li
+      class="item"
+      v-for='(item, key) of cities'
+      :key='key'
+      :ref='key'
+      @click='sendLetter'
+      @touchstart='handleTouchStart'
+      @touchmove='handleTouchMove'
+      @touchend='handleTouchEnd'
+    >{{ key }}</li>
   </ul>
 </template>
 
@@ -9,6 +18,35 @@ export default {
   name: 'Alphabet',
   props: {
     cities: Object
+  },
+  data () {
+    return {
+      touched: false
+    }
+  },
+  computed: {
+    letters () {
+      let letters = []
+      if (this.$refs) {
+        letters = Object.keys(this.$refs)
+      }
+      return letters
+    }
+  },
+  methods: {
+    sendLetter (e) {
+      this.$emit('change', e.target.innerText)
+    },
+    handleTouchStart (e) {
+      this.touched = true
+    },
+    handleTouchMove (e) {
+      // const initY = this.$refs['A'][0].offsetTop
+      // const touchY = e.touches[0].clientY
+    },
+    handleTouchEnd (e) {
+      this.touched = false
+    }
   }
 }
 </script>

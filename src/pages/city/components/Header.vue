@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="wrapper" ref="wrapper">
     <div class='header'>
       城市选择
       <router-link to="/">

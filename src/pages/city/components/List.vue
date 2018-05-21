@@ -17,7 +17,7 @@
           </li>
         </ul>
       </div>
-      <div class="area"  v-for='(item, key) of cities' :key='key'>
+      <div class="area"  v-for='(item, key) of cities' :key='key' :ref='key'>
         <div class="title border-topbottom">{{ key }}</div>
         <ul class="item-list">
           <li class="item border-bottom" v-for='list of item' :key='list.id'>
@@ -42,6 +42,20 @@ export default {
     },
     cities: {
       type: Object
+    },
+    letter: String
+  },
+  watch: {
+    letter () {
+      const el = this.$refs[this.letter][0]
+      if (this.scroll && el) {
+        this.scroll.scrollToElement(el)
+      }
+    }
+  },
+  methods: {
+    handleClick (e) {
+      console.log(e)
     }
   }
 }
