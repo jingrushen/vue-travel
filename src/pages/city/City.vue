@@ -1,8 +1,7 @@
 <template>
   <div>
-    <city-header></city-header>
-    <city-list :hotCities='hotCities' :cities='cities' :letter='letter'></city-list>
-    <city-alphabet :cities='cities' @change='sendLetter'></city-alphabet>
+    <city-header :cities='cities' @getH='getHeaderH'></city-header>
+    <city-list :hotCities='hotCities' :cities='cities' :headerH='headerH'></city-list>
   </div>
 </template>
 
@@ -10,19 +9,17 @@
 import axios from 'axios'
 import CityHeader from './components/Header'
 import CityList from './components/List'
-import CityAlphabet from './components/Alphabet'
 export default {
   name: 'City',
   components: {
     CityHeader,
-    CityList,
-    CityAlphabet
+    CityList
   },
   data () {
     return {
       hotCities: [],
       cities: {},
-      letter: ''
+      headerH: 0
     }
   },
   mounted () {
@@ -41,9 +38,8 @@ export default {
         this.cities = data.cities
       }
     },
-    sendLetter (letter) {
-      this.letter = letter
-      console.log(this.$refs)
+    getHeaderH (h) {
+      this.headerH = h
     }
   }
 }

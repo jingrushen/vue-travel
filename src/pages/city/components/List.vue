@@ -5,14 +5,14 @@
         <div class="title border-topbottom">当前城市</div>
         <ul class="button-list">
           <li class="button-wraper">
-            <a class="button">北京</a>
+            <a class="button">{{this.city}}</a>
           </li>
         </ul>
       </div>
       <div class="area">
         <div class="title border-topbottom">热门城市</div>
         <ul class="button-list">
-          <li class="button-wraper"  v-for='item of hotCities' :key='item.id'>
+          <li class="button-wraper"  v-for='item of hotCities' :key='item.id' @click='clickCity(item.name)'>
             <a class="button">{{ item.name }}</a>
           </li>
         </ul>
@@ -20,42 +20,91 @@
       <div class="area"  v-for='(item, key) of cities' :key='key' :ref='key'>
         <div class="title border-topbottom">{{ key }}</div>
         <ul class="item-list">
-          <li class="item border-bottom" v-for='list of item' :key='list.id'>
-            <a href="">{{ list.name }}</a>
+          <li class="item border-bottom" v-for='list of item' :key='list.id'  @click='clickCity(list.name)'>
+            <a>{{ list.name }}</a>
           </li>
         </ul>
       </div>
     </div>
+    <city-alphabet :cities='cities' :headerH='headerH' @change='changeLetter' :currLetter='currLetter'></city-alphabet>
   </div>
 </template>
 
 <script>
+import CityAlphabet from './Alphabet'
 import BScroll from 'better-scroll'
+import { mapState } from 'vuex'
 export default {
   name: 'CityList',
+  data () {
+    return {
+      scrollY: 0,
+      listGroup: [],
+      listY: [],
+      currIndex: 0,
+      currLetter: 'A'
+    }
+  },
+  components: {
+    CityAlphabet
+  },
   mounted () {
-    this.scroll = new BScroll(this.$refs.wrapper)
+    let _t = this
+    this.scroll = new BScroll(this.$refs.wrapper, {
+      probeType: 3
+    })
+    this.scroll.on('scroll', function (pos) {
+      _t.scrollY = pos.y
+    })
   },
   props: {
-    hotCities: {
-      type: Array
-    },
-    cities: {
-      type: Object
-    },
-    letter: String
+    hotCities: Array,
+    cities: Object,
+    headerH: Number
+  },
+  computed: {
+    ...mapState(['city'])
   },
   watch: {
-    letter () {
-      const el = this.$refs[this.letter][0]
-      if (this.scroll && el) {
-        this.scroll.scrollToElement(el)
-      }
+    cities () {
+      this.listGroup = Object.keys(this.cities)
+      this.$nextTick(function () {
+        let _t = this
+        this.listGroup.forEach(function (item) {
+          _t.listY.push(_t.$refs[item][0].offsetTop)
+        })
+        _t.listY.push(_t.$refs['Z'][0].offsetTop + _t.$refs['Z'][0].offsetHeight)
+      })
+    },
+    scrollY (y) {
+      requestAnimationFrame(() => {
+        if (y >= 0) {
+          this.currIndex = 0
+        } else {
+          y = Math.abs(y)
+          let len = this.listY.length
+          for (let i = 1; i < len; i++) {
+            if (this.listY[i - 1] <= y && y < this.listY[i]) {
+              this.currIndex = i - 1
+              break
+            }
+          }
+        }
+        this.currLetter = this.listGroup[this.currIndex]
+      })
     }
   },
   methods: {
-    handleClick (e) {
-      console.log(e)
+    clickCity (city) {
+      this.$store.commit('changeCity', city)
+      this.$router.push('/')
+    },
+    changeLetter (l) {
+      const el = this.$refs[l][0]
+      if (this.scroll && el) {
+        this.scroll.scrollToElement(el)
+        this.currLetter = l
+      }
     }
   }
 }

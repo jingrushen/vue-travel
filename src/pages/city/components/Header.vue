@@ -8,7 +8,7 @@
         </div>
       </router-link>
     </div>
-    <city-search></city-search>
+    <city-search :cities='cities'></city-search>
   </div>
 
 </template>
@@ -18,10 +18,19 @@ import CitySearch from './Search'
 export default {
   name: 'CityHeader',
   props: {
-    city: String
+    cities: Object
   },
   components: {
     CitySearch
+  },
+  data () {
+    return {
+      headerH: 0
+    }
+  },
+  mounted () {
+    this.headerH = this.$refs.wrapper.offsetHeight
+    this.$emit('getH', this.headerH)
   }
 }
 </script>
