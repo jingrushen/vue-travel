@@ -25,6 +25,9 @@ export default {
   mounted () {
     this.getCityInfo()
   },
+  activated () {
+    console.log('activated')
+  },
   methods: {
     getCityInfo () {
       axios.get('/api/city.json')

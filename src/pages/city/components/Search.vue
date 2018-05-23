@@ -33,6 +33,7 @@ export default {
   methods: {
     clickCity (city) {
       this.$store.commit('changeCity', city)
+      this.keyword = ''
       this.$router.push('/')
     }
   },

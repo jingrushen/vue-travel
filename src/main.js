@@ -10,11 +10,14 @@ import 'styles/reset.css'
 import 'styles/border.css'
 import 'styles/iconfont.css'
 import VueAwesomeSwiper from 'vue-awesome-swiper'
+import Icon from 'vue-awesome/components/Icon'
+import 'vue-awesome/icons'
 import 'swiper/dist/css/swiper.css'
 
 Vue.config.productionTip = false
 fastClick.attach(document.body)
 Vue.use(VueAwesomeSwiper)
+Vue.component('icon', Icon)
 
 /* eslint-disable no-new */
 new Vue({

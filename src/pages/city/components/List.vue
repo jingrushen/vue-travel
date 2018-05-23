@@ -48,14 +48,19 @@ export default {
   components: {
     CityAlphabet
   },
-  mounted () {
+  activated () {
     let _t = this
-    this.scroll = new BScroll(this.$refs.wrapper, {
-      probeType: 3
-    })
+    this.scroll.refresh()
     this.scroll.on('scroll', function (pos) {
+      console.log(pos.y)
       _t.scrollY = pos.y
     })
+    console.log(this.scroll)
+  },
+  mounted () {
+    console.log('list mounter')
+    this.scroll = new BScroll(this.$refs.wrapper)
+    console.log(this.scroll)
   },
   props: {
     hotCities: Array,
