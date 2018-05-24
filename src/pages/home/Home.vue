@@ -26,7 +26,7 @@ export default {
     HomeWeekend
   },
   computed: {
-    ...mapState(['city'])
+    ...mapState(['city', 'home_top'])
   },
   methods: {
     getHomeInfo () {
@@ -53,6 +53,10 @@ export default {
       this.getHomeInfo()
       this.lastCity = this.city
     }
+    window.scrollTo(0, this.home_top)
+  },
+  deactivated () {
+    this.$store.commit('changeScrollY', window.scrollY)
   },
   data () {
     return {

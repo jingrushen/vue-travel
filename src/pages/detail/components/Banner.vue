@@ -10,7 +10,12 @@
         </div>
       </div>
     </div>
-    <common-gallary :imgs='imgs' v-show='showGallary' @cancel='closeG'></common-gallary>
+    <transition
+      enter-active-class='animated zoomIn'
+      leave-active-class='animated zoomOut'
+    >
+      <common-gallary :imgs='imgs' v-if='showGallary' @cancel='closeG'></common-gallary>
+    </transition>
   </div>
 </template>
 
@@ -31,16 +36,27 @@ export default {
   methods: {
     showG () {
       this.showGallary = true
+      window.addEventListener('mousewheel', this.forbidScroll)
+      window.addEventListener('touchmove', this.forbidScroll, {passive: false})
     },
     closeG () {
-      console.log('父组件')
       this.showGallary = false
+      window.removeEventListener('mousewheel', this.forbidScroll)
+      window.removeEventListener('touchmove', this.forbidScroll, {passive: false})
+    },
+    forbidScroll (e) {
+      e.preventDefault()
+      e.returnValue = false
+      e.stopPropagation()
+      return false
     }
   }
 }
 </script>
 
 <style lang='stylus' scoped>
+  .animated
+    animation-duration .2s
   .banner
     overflow hidden
     height 0

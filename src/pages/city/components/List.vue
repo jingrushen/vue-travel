@@ -38,6 +38,7 @@ export default {
   name: 'CityList',
   data () {
     return {
+      scroll1: {},
       scrollY: 0,
       listGroup: [],
       listY: [],
@@ -50,17 +51,15 @@ export default {
   },
   activated () {
     let _t = this
-    this.scroll.refresh()
-    this.scroll.on('scroll', function (pos) {
-      console.log(pos.y)
+    this.scroll1.refresh()
+    this.scroll1.on('scroll', function (pos) {
       _t.scrollY = pos.y
     })
-    console.log(this.scroll)
   },
   mounted () {
-    console.log('list mounter')
-    this.scroll = new BScroll(this.$refs.wrapper)
-    console.log(this.scroll)
+    this.scroll1 = new BScroll(this.$refs.wrapper, {
+      probeType: 3
+    })
   },
   props: {
     hotCities: Array,
@@ -106,8 +105,8 @@ export default {
     },
     changeLetter (l) {
       const el = this.$refs[l][0]
-      if (this.scroll && el) {
-        this.scroll.scrollToElement(el)
+      if (this.scroll1 && el) {
+        this.scroll1.scrollToElement(el)
         this.currLetter = l
       }
     }

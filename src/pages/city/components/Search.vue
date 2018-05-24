@@ -23,7 +23,7 @@ export default {
       keyword: '',
       list: [],
       timer: null,
-      scroll,
+      scroll2: {},
       hasNoData: false
     }
   },
@@ -38,7 +38,7 @@ export default {
     }
   },
   mounted () {
-    this.scroll = new BScroll(this.$refs.wrapper)
+    this.scroll2 = new BScroll(this.$refs.wrapper)
   },
   watch: {
     keyword () {
@@ -61,6 +61,7 @@ export default {
         this.list = result
         this.hasNoData = !this.list.length
       }, 100)
+      this.scroll2.refresh()
     }
   }
 }

@@ -22,11 +22,16 @@ export default {
       headerH: 0
     }
   },
+  watch: {
+    '$router' (to, from) {
+    }
+  },
   mounted () {
     this.getCityInfo()
   },
   activated () {
-    console.log('activated')
+    // console.log('activated')
+    // console.log(this.$router)
   },
   methods: {
     getCityInfo () {

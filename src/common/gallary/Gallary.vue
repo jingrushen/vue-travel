@@ -43,18 +43,20 @@ export default {
 </script>
 
 <style lang='stylus' scoped>
-  .container >>> .swiper-container
+  .wrapper >>> .swiper-container
     overflow inherit
   .container
     display flex
     flex-direction column
     justify-content center
-    position absolute
+    position fixed
     top 0
     right 0
     bottom 0
     left 0
     background #000
+    z-index 99
+    overflow hidden
     .wrapper
       width 100%
       .gallary-img
