@@ -42,6 +42,10 @@ export default {
         this.icon = data.iconList2
         this.weekend = data.weekendList
       }
+    },
+    getY (e) {
+      let y = document.documentElement.scrollTop || document.body.scrollTop
+      this.scrollY = y
     }
   },
   mounted () {
@@ -53,10 +57,12 @@ export default {
       this.getHomeInfo()
       this.lastCity = this.city
     }
+    window.addEventListener('scroll', this.getY)
     window.scrollTo(0, this.home_top)
   },
   deactivated () {
-    this.$store.commit('changeScrollY', window.scrollY)
+    window.removeEventListener('scroll', this.getY)
+    this.$store.commit('changeScrollY', this.scrollY)
   },
   data () {
     return {
@@ -64,7 +70,8 @@ export default {
       recommend: [],
       swiper: [],
       icon: [],
-      weekend: []
+      weekend: [],
+      scrollY: 0
     }
   }
 }

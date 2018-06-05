@@ -23,7 +23,7 @@ export default {
     }
   },
   watch: {
-    '$router' (to, from) {
+    '$route' (to, from) {
     }
   },
   mounted () {

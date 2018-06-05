@@ -2,11 +2,11 @@
   <div>
     <div class="title">热销推荐</div>
     <ul>
-      <router-link
+      <a
         class="item border-bottom"
         v-for='item of recommend'
         :key='item.id'
-        :to='"/detail/" + item.id'
+        @click='goList(item.id)'
       >
         <img class='item-img' :src="item.imgUrl">
         <div class="item-info">
@@ -14,7 +14,7 @@
           <p class="item-desc">{{item.desc}}</p>
           <button class="item-btn">查看详情</button>
         </div>
-      </router-link>
+      </a>
     </ul>
   </div>
 </template>
@@ -24,6 +24,18 @@ export default {
   name: 'Recommend',
   props: {
     recommend: Array
+  },
+  methods: {
+    goList (id) {
+      this.$router.push({
+        name: 'Detail',
+        params: {
+          id
+        }
+      })
+    }
+  },
+  watch: {
   }
 }
 </script>

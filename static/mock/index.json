@@ -118,32 +118,32 @@
         {
           "id": "003",
           "class": "icon-3",
-          "desc": "签证 · WIFI"
+          "desc": "一日游"
         },
         {
           "id": "004",
           "class": "icon-4",
-          "desc": "出境游"
+          "desc": "美食林"
         },
         {
           "id": "005",
           "class": "icon-5",
-          "desc": "签证 · WIFI"
+          "desc": "汽车票"
         },
         {
           "id": "006",
           "class": "icon-6",
-          "desc": "签证 · WIFIsfaffadffasf"
+          "desc": "国内游"
         },
         {
           "id": "007",
           "class": "icon-7",
-          "desc": "出境游"
+          "desc": "超级巴士"
         },
         {
           "id": "008",
           "class": "icon-8",
-          "desc": "签证 · WIFI"
+          "desc": "攻略"
         },
         {
           "id": "009",
@@ -158,7 +158,7 @@
         {
           "id": "0011",
           "class": "icon-4",
-          "desc": "出境游"
+          "desc": "美食林"
         }
       ]
   }
