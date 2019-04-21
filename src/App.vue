@@ -15,7 +15,7 @@ export default {
     B
   },
   data() {
-    name: 'hello'
+    name: 'merge1'
   }
 }
 </script>
