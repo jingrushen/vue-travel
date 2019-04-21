@@ -14,7 +14,6 @@ export default {
 
 <style>
 .gloabl {
-  color: red;
-  background: green;
+  width: 100px;
 }
 </style>
