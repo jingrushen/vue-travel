@@ -11,7 +11,8 @@ export default {
   name: 'App',
   components: {
     A,
-    C
+    C,
+    B
   }
 }
 </script>
