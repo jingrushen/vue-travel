@@ -15,7 +15,8 @@ export default {
     B
   },
   data() {
-    name: 'hello'
+    age= 12,
+    name= 'merge1'
   }
 }
 </script>
