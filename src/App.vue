@@ -13,6 +13,9 @@ export default {
     A,
     C,
     B
+  },
+  data() {
+    name: 'hello'
   }
 }
 </script>
