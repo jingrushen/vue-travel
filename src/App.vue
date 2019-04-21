@@ -17,4 +17,7 @@ export default {
   width: 200px;
   height: 200px;
 }
+.hello {
+  font-size: 12px;
+}
 </style>
