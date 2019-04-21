@@ -16,7 +16,7 @@ export default {
   },
   data() {
     age= 12,
-    name= 'master1'
+    name= 'feature | master1'
   }
 }
 </script>
