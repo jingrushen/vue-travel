@@ -13,5 +13,8 @@ export default {
 </script>
 
 <style>
-
+.gloabl {
+  color: red;
+  background: green;
+}
 </style>
