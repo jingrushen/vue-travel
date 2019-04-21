@@ -8,16 +8,13 @@
 
 <script>
 export default {
-  name: 'App'
+  name: 'App',
+  components: {
+    A
+  }
 }
 </script>
 
 <style>
-.global {
-  width: 200px;
-  height: 200px;
-}
-.hello {
-  font-size: 12px;
-}
+
 </style>
