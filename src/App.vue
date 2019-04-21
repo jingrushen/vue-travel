@@ -16,7 +16,7 @@ export default {
   },
   data() {
     age= 12,
-    name= 'merge1'
+    name= 'master'
   }
 }
 </script>
