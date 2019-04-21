@@ -13,5 +13,7 @@ export default {
 </script>
 
 <style>
-
+.hello {
+  background: red;
+}
 </style>
